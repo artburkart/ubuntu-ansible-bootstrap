@@ -1,0 +1,37 @@
+---
+
+- block:
+  - name: Check if Sublime Text 3 is installed
+    shell: /usr/bin/subl --version | grep "Build 3"
+
+  - name: Sublime Text 3 is installed
+    set_fact:
+      st3_installed: true
+
+  rescue:
+  - name: Sublime Text 3 is not installed
+    set_fact:
+      st3_installed: false
+
+- block:
+  - name: Download Sublime Text 3
+    get_url:
+      url: https://download.sublimetext.com/sublime-text_build-{{ build_version }}_amd64.deb
+      dest: /tmp/
+
+  - name: Install Sublime Text 3
+    apt:
+      deb: /tmp/sublime-text_build-3114_amd64.deb
+
+  when: st3_installed == false
+
+- name: Check if Package Control is installed
+  stat:
+    path: ~/.config/sublime-text-3/Installed Packages/Package Control.sublime-package
+  register: pkg_ctrl
+
+- name: Install Package Control
+  get_url:
+    url: https://packagecontrol.io/Package%20Control.sublime-package
+    dest: ~/.config/sublime-text-3/Installed Packages/Package Control.sublime-package
+  when: pkg_ctrl.stat.exists == false

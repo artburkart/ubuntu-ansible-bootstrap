@@ -1,0 +1,38 @@
+---
+- name: Install git
+  apt:
+    name: git
+    state: latest
+
+- name: Check if config exists
+  stat:
+    path: ~/.gitconfig
+  register: gitconfig
+
+- name: Set up global git config
+  get_url:
+    url: "{{ gitconfig_url }}"
+    dest: ~/.gitconfig
+  when: not gitconfig.stat.exists
+
+- name: Check if SSH key exists for GitHub
+  stat:
+    path: ~/.ssh/github
+  register: github
+
+- block:
+  - name: Create SSH key for GitHub
+    shell: ssh-keygen -t rsa -b 4096 -C "{{ github_email }}" -f ~/.ssh/github -q -N ""
+    args:
+      creates: ~/.ssh/github
+
+  - name: Change ownership on SSH key
+    file:
+      path: ~/.ssh
+      recurse: yes
+      state: directory
+      owner: "{{ cur_user }}"
+      group: "{{ cur_group }}"
+
+  when: not github.stat.exists
+

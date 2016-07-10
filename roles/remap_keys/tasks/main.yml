@@ -1,0 +1,30 @@
+---
+
+- block:
+  - debug: msg="These changes will only take place after restarting the machine"
+
+  - name: Re-map HOME key to PGUP key
+    replace:
+      dest: /usr/share/X11/xkb/symbols/pc
+      regexp: 'key \<HOME\>.*Home.*'
+      replace: 'key <PGUP> {        [  Home                 ]       };'
+
+  - name: Re-map PgUp key to Home key
+    replace:
+      dest: /usr/share/X11/xkb/symbols/pc
+      regexp: 'key \<PGUP\>.*Prior.*'
+      replace: 'key <HOME> {        [  Prior                ]       };'
+
+  - name: Re-map End key to PgDn key
+    replace:
+      dest: /usr/share/X11/xkb/symbols/pc
+      regexp: 'key  \<END\>.*End.*'
+      replace: 'key <PGDN> {        [  End                  ]       };'
+
+  - name: Re-map PgDn key to End key
+    replace:
+      dest: /usr/share/X11/xkb/symbols/pc
+      regexp: 'key \<PGDN\>.*Next.*'
+      replace: 'key  <END> {        [  Next                 ]       };'
+  when: ("{{ ansible_product_version }}" == "ThinkPad Yoga 14")
+  become: yes

@@ -1,0 +1,11 @@
+---
+pkgs:
+  - python
+  - python-setuptools
+  - python-dev
+  - build-essential
+  - python-pip
+  - dconf-tools
+  - jq
+  # - xbindkeys
+  # - xautomation

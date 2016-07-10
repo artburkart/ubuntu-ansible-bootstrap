@@ -1,0 +1,11 @@
+- hosts:
+  - localhost
+  roles:
+  - apt_pkgs
+  - git
+  - pip_pkgs
+  - chrome
+  - sublime
+  - remap_keys
+  vars_files:
+    - ../vars.yml
