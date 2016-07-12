@@ -1,0 +1,41 @@
+---
+- block:
+  - name: Check if erlang is installed
+    shell: erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().'  -noshell
+
+  - name: Check if elixir is installed
+    shell: elixir --version | grep -q "Elixir"
+
+  rescue:
+    - name: Download erlang debian package
+      get_url:
+        url: https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
+        dest: /tmp/erlang-solutions_1.0_all.deb
+
+    - name: Install erlang debian package
+      apt:
+        deb: /tmp/erlang-solutions_1.0_all.deb
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install erlang dependecies
+      apt:
+        name: esl-erlang
+        state: latest
+
+    - name: Install elixir dependencies
+      apt:
+        name: elixir
+        state: latest
+
+- name: Install hex package manager
+  shell: mix local.hex --force
+  args:
+    creates: ~/.mix/archives/hex-*
+
+- name: Install Phoenix web framework
+  shell: mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez --force
+  args:
+    creates: ~/.mix/archives/phoenix_new

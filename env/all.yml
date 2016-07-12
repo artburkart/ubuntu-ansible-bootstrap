@@ -7,5 +7,6 @@
   - chrome
   - sublime
   - remap_keys
+  - elixir
   vars_files:
     - ../vars.yml

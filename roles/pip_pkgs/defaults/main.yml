@@ -2,3 +2,4 @@
 pkgs:
   - aws-shell
   - awscli
+  - virtualenv
