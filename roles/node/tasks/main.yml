@@ -1,0 +1,15 @@
+---
+- block:
+  - name: Check node is installed
+    shell: node --version
+
+  rescue:
+    - name: Prepare node package installation
+      shell: curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+      args:
+        warn: no
+
+    - name: Install node package
+      apt:
+        name: nodejs
+        state: present

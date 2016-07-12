@@ -1,0 +1,16 @@
+---
+- name: Install n package
+  shell: npm i -g n
+  become: yes
+
+- name: Download & install node using n
+  shell: n `node --version | cut -c 2-`
+  become: yes
+
+- name: Install global npm packages
+  npm:
+    name: "{{ item }}"
+    global: yes
+    state: latest
+  with_items: "{{ pkgs }}"
+  become: yes

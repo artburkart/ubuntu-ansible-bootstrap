@@ -8,5 +8,7 @@
   - sublime
   - remap_keys
   - elixir
+  - node
+  - npm
   vars_files:
     - ../vars.yml
