@@ -10,5 +10,6 @@
   - elixir
   - node
   - npm
+  - docker
   vars_files:
     - ../vars.yml

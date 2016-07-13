@@ -7,5 +7,5 @@ pkgs:
   - python-pip
   - dconf-tools
   - jq
-  # - xbindkeys
-  # - xautomation
+  - apt-transport-https
+  - ca-certificates
