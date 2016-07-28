@@ -1,4 +1,17 @@
 ---
+- name: Install pip dependencies
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ pip_pkgs }}"
+  become: yes
+
+- name: Install latest pip
+  pip:
+    name: pip
+    state: latest
+  become: yes
+
 - name: Install apt packages
   apt:
     name: "{{ item }}"

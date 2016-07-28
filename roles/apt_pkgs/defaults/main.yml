@@ -1,11 +1,14 @@
 ---
 pkgs:
+  - dconf-tools
+  - jq
+  - apt-transport-https
+  - ca-certificates
+  - tree
+
+pip_pkgs:
   - python
   - python-setuptools
   - python-dev
   - build-essential
   - python-pip
-  - dconf-tools
-  - jq
-  - apt-transport-https
-  - ca-certificates

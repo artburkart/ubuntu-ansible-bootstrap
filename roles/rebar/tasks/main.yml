@@ -1,0 +1,11 @@
+---
+- block:
+  - name: Check if rebar is installed
+    shell: which rebar
+
+  rescue:
+    - name: Download rebar binary file
+      get_url:
+        url: https://s3.amazonaws.com/rebar3/rebar3
+        dest: /usr/bin/rebar
+        mode: 0755
