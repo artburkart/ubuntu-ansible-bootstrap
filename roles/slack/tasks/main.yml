@@ -1,0 +1,19 @@
+---
+- block:
+    - name: Check if Slack is installed
+      shell: slack --version
+  rescue:
+    - name: Download Slack
+      get_url:
+        url: https://downloads.slack-edge.com/linux_releases/slack-desktop-2.1.0-amd64.deb
+        dest: /tmp/slack.deb
+
+    - name: Install Slack
+      apt:
+        deb: /tmp/slack.deb
+      become: yes
+
+- name: Update apt cache
+  package:
+    name: slack-desktop
+    state: latest

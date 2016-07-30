@@ -6,6 +6,9 @@
   rescue:
     - name: Download rebar binary file
       get_url:
-        url: https://s3.amazonaws.com/rebar3/rebar3
+        url: https://github.com/rebar/rebar/wiki/rebar
         dest: /usr/bin/rebar
         mode: 0755
+        owner: root
+        group: root
+      become: yes
