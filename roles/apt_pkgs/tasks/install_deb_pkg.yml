@@ -1,0 +1,20 @@
+---
+- block:
+  - name: "Check if {{ item.name }} is installed"
+    shell: "{{ item.check_cmd }}"
+
+  rescue:
+    - name: "Download {{ item.name }}"
+      get_url:
+        url: "{{ item.url }}"
+        dest: "{{ item.dest }}/{{ item.name }}.deb"
+
+    - name: "Install {{ item.name }}"
+      apt:
+        deb: "{{ item.dest }}/{{ item.name }}.deb"
+      become: yes
+
+- name: "Update {{ item.name }}"
+  package:
+    name: "{{ item.name }}"
+    state: latest

@@ -1,18 +1,16 @@
 - hosts:
   - localhost
   roles:
-  - apt_pkgs
+  - { role: apt_pkgs, tags: ['apt'] }
   - git
   - pip_pkgs
   - chrome
-  - sublime
+  - { role: sublime, tags: ['sublime'] }
   - remap_keys
   - elixir
   - { role: node, tags: ['node'] }
   - { role: npm, tags: ['node'] }
   - docker
   - { role: rebar, tags: ['erlang'] }
-  - { role: slack, tags: ['slack'] }
-  - { role: rocketchat, tags: ['rocketchat'] }
   vars_files:
     - ../vars.yml

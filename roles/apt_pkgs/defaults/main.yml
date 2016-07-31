@@ -1,10 +1,28 @@
 ---
-pkgs:
-  - dconf-tools
-  - jq
-  - apt-transport-https
-  - ca-certificates
-  - tree
+apt_pkgs:
+  - { name: dconf-tools, state: latest }
+  - { name: jq, state: latest }
+  - { name: apt-transport-https, state: latest }
+  - { name: ca-certificates, state: latest }
+  - { name: tree, state: latest }
+  - { name: gimp, state: latest, ppa: "ppa:otto-kesselgulasch/gimp" }
+
+deb_pkgs:
+  -
+    name: rocketchat
+    state: latest
+    check_cmd: 'stat /opt/rocketchat/rocketchat'
+    url: https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/1.3.1/rocketchat-v1.3.1-linux-x64.deb
+  -
+    name: slack-desktop
+    state: latest
+    check_cmd: 'stat /usr/bin/slack'
+    url: https://downloads.slack-edge.com/linux_releases/slack-desktop-2.1.0-amd64.deb
+  -
+    name: sublime-text
+    state: latest
+    check_cmd: '/usr/bin/subl --version | grep "Build 3"'
+    url: https://download.sublimetext.com/sublime-text_build-{{ build_version }}_amd64.deb
 
 pip_pkgs:
   - python

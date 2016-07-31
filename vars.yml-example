@@ -1,2 +1,5 @@
 ---
 gitconfig_url: https://gist.githubusercontent.com/artburkart/e2140ec78d757ec85e19/raw/8df738703ac5941b79a8fede4f28b3d93eeeec46/.gitconfig
+github_email: example@example.com
+cur_user: artburkart
+cur_group: artburkart
