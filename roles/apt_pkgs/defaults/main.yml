@@ -1,11 +1,12 @@
 ---
 pkgs:
-  - { name: dconf-tools, state: latest }
-  - { name: jq, state: latest }
   - { name: apt-transport-https, state: latest }
   - { name: ca-certificates, state: latest }
-  - { name: tree, state: latest }
+  - { name: dconf-tools, state: latest }
   - { name: gimp, state: latest, ppa: "ppa:otto-kesselgulasch/gimp" }
+  - { name: inotify-tools, state: latest }
+  - { name: jq, state: latest }
+  - { name: tree, state: latest }
 
 deb_pkgs:
   -
