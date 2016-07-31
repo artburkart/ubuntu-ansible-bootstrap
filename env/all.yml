@@ -12,5 +12,6 @@
   - { role: npm, tags: ['node'] }
   - docker
   - { role: rebar, tags: ['erlang'] }
+  - { role: network_manager, tags: ['reconnect'] }
   vars_files:
     - ../vars.yml

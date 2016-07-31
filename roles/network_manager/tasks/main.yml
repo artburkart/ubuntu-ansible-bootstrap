@@ -1,2 +1,8 @@
 ---
-# tasks file for network_manager
+- name: Enable network-manager reconnect service
+  copy:
+    src: reconnect.conf
+    dest: /etc/init/reconnect-network-manager.conf
+    owner: root
+    group: root
+    mode: 0644

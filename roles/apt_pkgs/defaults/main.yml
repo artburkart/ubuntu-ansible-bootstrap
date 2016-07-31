@@ -1,5 +1,5 @@
 ---
-apt_pkgs:
+pkgs:
   - { name: dconf-tools, state: latest }
   - { name: jq, state: latest }
   - { name: apt-transport-https, state: latest }
