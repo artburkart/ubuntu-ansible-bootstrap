@@ -13,5 +13,6 @@
   - docker
   - { role: rebar, tags: ['erlang'] }
   - { role: slack, tags: ['slack'] }
+  - { role: rocketchat, tags: ['rocketchat'] }
   vars_files:
     - ../vars.yml

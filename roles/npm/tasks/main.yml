@@ -3,12 +3,12 @@
   shell: npm i -g n
   become: yes
 
-- name: Download & install latest node using n
-  shell: n latest
+- name: Download & install node using n
+  shell: n `/usr/bin/nodejs --version | cut -c 2-`
   become: yes
 
-- name: Download & install node using n
-  shell: n `node --version | cut -c 2-`
+- name: Download & install latest node using n
+  shell: n latest
   become: yes
 
 - name: Install global npm packages
