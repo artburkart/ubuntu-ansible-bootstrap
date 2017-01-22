@@ -7,7 +7,7 @@
   - chrome
   - { role: sublime, tags: ['sublime'] }
   - remap_keys
-  - elixir
+  - { role: elixir, tags: ['elixir'] }
   - { role: node, tags: ['node'] }
   - { role: npm, tags: ['node'] }
   - docker
