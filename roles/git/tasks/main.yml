@@ -31,8 +31,8 @@
       path: ~/.ssh
       recurse: yes
       state: directory
-      owner: "{{ cur_user }}"
-      group: "{{ cur_group }}"
+      owner: "{{ ansible_env.SUDO_USER }}"
+      group: "{{ ansible_env.SUDO_USER }}"
 
   when: not github.stat.exists
 

@@ -1,0 +1,10 @@
+---
+- name: Install Pip packages
+  pip: name="{{ item }}" state=latest
+  with_items: "{{ pkgs }}"
+  become: yes
+
+- name: Configure thefuck
+  lineinfile: dest="/home/{{ ansible_env.SUDO_USER }}/.bashrc" line="eval $(thefuck --alias)"
+  when: "'thefuck' in pkgs"
+

@@ -4,7 +4,7 @@
     path: "{{ sublime_dir }}"
     state: directory
     mode: 0700
-    owner: "{{ cur_user }}"
+    owner: "{{ ansible_env.SUDO_USER }}"
 
 - name: Check if Package Control is installed
   stat:

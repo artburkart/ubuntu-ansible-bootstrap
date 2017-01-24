@@ -1,17 +1,16 @@
-- hosts:
-  - localhost
+- hosts: localhost
   roles:
-  - { role: apt_pkgs, tags: ['apt'] }
+  - { role: apt_pkgs, tags: [apt] }
   - git
-  - pip_pkgs
-  - chrome
-  - { role: sublime, tags: ['sublime'] }
+  - { role: pip, tags: [pip] }
+  - { role: chrome, tags: [chrome] }
+  - { role: sublime, tags: [sublime] }
   - remap_keys
-  - { role: elixir, tags: ['elixir'] }
-  - { role: node, tags: ['node'] }
-  - { role: npm, tags: ['node'] }
+  - { role: elixir, tags: [elixir] }
+  - { role: node, tags: [node] }
+  - { role: npm, tags: [node] }
   - docker
-  - { role: rebar, tags: ['erlang'] }
-  - { role: network_manager, tags: ['reconnect'] }
+  - { role: rebar, tags: [erlang] }
+  - { role: network_manager, tags: [reconnect] }
   vars_files:
     - ../vars.yml
