@@ -12,5 +12,6 @@
   - docker
   - { role: rebar, tags: [erlang] }
   - { role: network_manager, tags: [reconnect] }
+  - { role: vbox, tags: [vbox] }
   vars_files:
     - ../vars.yml

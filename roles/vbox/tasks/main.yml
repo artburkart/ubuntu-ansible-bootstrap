@@ -1,0 +1,11 @@
+---
+- name: Install VirtualBox
+  package: name=virtualbox state=latest
+
+# - name: Install vagrant
+#   package: name=vagrant state=latest
+
+- name: Install vagrant
+  apt:
+    deb: "{{ vagrant_url }}"
+
